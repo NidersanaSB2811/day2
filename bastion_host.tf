@@ -1,8 +1,8 @@
 resource "aws_instance" "bastion_ec2" {
-  ami           = var.ami_id# Ubuntu AMI ID for your region
+  ami           = var.ami_id # Ubuntu AMI ID for your region
   instance_type = "t2.micro"
-  subnet_id     = aws_subnet.pub_subnet[0].id  # put in first public subnet
-  key_name      = var.key_name            # same key as backend/frontend
+  subnet_id     = aws_subnet.pub_subnet[0].id # put in first public subnet
+  key_name      = var.key_name                # same key as backend/frontend
 
   associate_public_ip_address = true
 

@@ -24,3 +24,5 @@ terraform.tfvars
 # SSH keys / certs
 *.pem
 
+frontend_rendered.tf
+

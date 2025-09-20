@@ -1,45 +1,45 @@
 module "back_end_alb" {
   source = "terraform-aws-modules/alb/aws"
 
-  name    = "back_end_alb"
+  name    = "backendalb"
   vpc_id  = aws_vpc.main.id
   subnets = aws_subnet.pvt_subnet.*.id
 
   # Security Group
   security_group_ingress_rules = {
     all_http = {
-      from_port   = 80
-      to_port     = 80
-      ip_protocol = "tcp"
+      from_port                    = 80
+      to_port                      = 80
+      ip_protocol                  = "tcp"
       referenced_security_group_id = aws_security_group.frontend_allow_all.id
-      description = "HTTP web traffic from frontend"
+      description                  = "HTTP web traffic from frontend"
     }
     all_https = {
-      from_port   = 443
-      to_port     = 443
-      ip_protocol = "tcp"
+      from_port                    = 443
+      to_port                      = 443
+      ip_protocol                  = "tcp"
       referenced_security_group_id = aws_security_group.frontend_allow_all.id
-      description = "HTTPS web traffic from frontend"
+      description                  = "HTTPS web traffic from frontend"
     }
   }
-
-  security_group_egress_rules = {
-    allow_to_frontend_ec2  = {
-      from_port   = "80"
-      to_port     = "80"
-      ip_protocol = "tcp"
-      referenced_security_group_id = aws_security_group.backend_allow_all.id
-      description                  = "Allow ALB to forward traffic to backend EC2s"
-    }
-  }
-
 
   # security_group_egress_rules = {
-  #   all = {
-  #     ip_protocol = "-1"
-  #     cidr_ipv4   = "10.0.0.0/16"
+  #   allow_to_frontend_ec2  = {
+  #     from_port   = "80"
+  #     to_port     = "80"
+  #     ip_protocol = "tcp"
+  #     referenced_security_group_id = aws_security_group.backend_allow_all.id
+  #     description                  = "Allow ALB to forward traffic to backend EC2s"
   #   }
   # }
+
+
+  security_group_egress_rules = {
+    all = {
+      ip_protocol = "-1"
+      cidr_ipv4   = "10.0.0.0/16"
+    }
+  }
 
 
   # security_group_egress_rules = {
@@ -64,7 +64,7 @@ module "back_end_alb" {
     ex-https = {
       port            = 443
       protocol        = "HTTPS"
-      #certificate_arn = aws_acm_certificate_validation.frontend_cert_validation.certificate_arn
+      certificate_arn = aws_acm_certificate_validation.frontend_cert_validation.certificate_arn
 
       forward = {
         target_group_arn = aws_lb_target_group.backend_tg.arn

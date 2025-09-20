@@ -1,7 +1,7 @@
 resource "aws_nat_gateway" "nat_gw" {
-  count = length(var.public_subnet_cidr)
-  allocation_id = element(aws_eip.nat_ip.*.id,count.index)
-  subnet_id     = element(aws_subnet.pub_subnet.*.id,count.index)
+  # count = length(var.public_subnet_cidr)
+  allocation_id = aws_eip.nat_ip.id
+  subnet_id     = aws_subnet.pub_subnet[0].id
 
   tags = {
     Name = "gw NAT"

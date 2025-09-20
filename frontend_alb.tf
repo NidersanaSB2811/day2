@@ -1,7 +1,7 @@
 module "front_end_alb" {
   source = "terraform-aws-modules/alb/aws"
 
-  name    = "front_end_alb"
+  name    = "frontendalb"
   vpc_id  = aws_vpc.main.id
   subnets = aws_subnet.pub_subnet.*.id
 
@@ -23,23 +23,23 @@ module "front_end_alb" {
     }
   }
 
-  security_group_egress_rules = {
-    allow_to_frontend_ec2  = {
-      from_port   = "80"
-      to_port     = "80"
-      ip_protocol = "tcp"
-      referenced_security_group_id = aws_security_group.frontend_allow_all.id
-      description                  = "Allow ALB to forward traffic to frontend EC2s"
-    }
-  }
-
-
   # security_group_egress_rules = {
-  #   all = {
-  #     ip_protocol = "-1"
-  #     cidr_ipv4   = "10.0.0.0/16"
+  #   allow_to_frontend_ec2  = {
+  #     from_port   = "80"
+  #     to_port     = "80"
+  #     ip_protocol = "tcp"
+  #     referenced_security_group_id = aws_security_group.frontend_allow_all.id
+  #     description                  = "Allow ALB to forward traffic to frontend EC2s"
   #   }
   # }
+
+
+  security_group_egress_rules = {
+    all = {
+      ip_protocol = "-1"
+      cidr_ipv4   = "10.0.0.0/16"
+    }
+  }
 
 
   # security_group_egress_rules = {
