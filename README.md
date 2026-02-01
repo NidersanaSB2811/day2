@@ -1,4 +1,6 @@
 ##     Implemented Infrastructure as Code using Terraform to provision a secure, multi-tier frontend–backend application on AWS. 
+![Terraform](https://img.shields.io/badge/Terraform-Infrastructure%20as%20Code-5C4EE5?style=flat-square)
+![AWS](https://img.shields.io/badge/AWS-Cloud%20Architecture-232F3E?style=flat-square)
 ![alt text](<Screenshot 2026-02-01 191453.png>)
 # Terraform AWS Frontend–Backend Architecture
 * Through this implementation, I gained hands-on experience with:
