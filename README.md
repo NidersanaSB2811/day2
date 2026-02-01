@@ -1,5 +1,5 @@
-## Implemented Infrastructure as Code using Terraform to provision a secure, multi-tier frontend–backend application on AWS. The project focuses on correct AWS networking design, security boundaries, and structured Terraform usage, rather than application complexity.
-
+##     Implemented Infrastructure as Code using Terraform to provision a secure, multi-tier frontend–backend application on AWS. 
+![alt text](<Screenshot 2026-02-01 191453.png>)
 # Terraform AWS Frontend–Backend Architecture
 * Through this implementation, I gained hands-on experience with:
 * Designing and implementing a Virtual Private Cloud (VPC) with proper network isolation
@@ -167,19 +167,6 @@ Terraform’s dependency graph determines creation order.
 
 ---
 
-### Terraform State Management
-
-```hcl
-terraform {
-  backend "s3" {
-    bucket = "vpc2-state-bucket"
-    key    = "state1"
-    region = "us-east-1"
-  }
-}
-```
-
----
 
 ## Deployment Workflow
 
