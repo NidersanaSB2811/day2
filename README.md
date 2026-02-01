@@ -5,7 +5,7 @@
 ![ALB](https://img.shields.io/badge/Application%20Load%20Balancer-Networking-0073BB?style=flat-square)
 ![Route53](https://img.shields.io/badge/Route%2053-DNS-0073BB?style=flat-square)
 ![Status](https://img.shields.io/badge/Project%20Status-Completed-1F6FEB?style=flat-square)
-![alt text](<Screenshot 2026-02-01 191453.png>)
+![alt text](day1.png)
 # Terraform AWS Frontend–Backend Architecture
 * Through this implementation, I gained hands-on experience with:
 * Designing and implementing a Virtual Private Cloud (VPC) with proper network isolation
